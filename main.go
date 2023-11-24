@@ -27,7 +27,6 @@ assets := []string{"BTC", "ETH", "XRP"}
 			return ExchangeRates{}, err
 		}
 
-		// Assuming the API response has a 'rate' field
 		rate, ok := data["rate"].(float64)
 		if !ok {
 			return ExchangeRates{}, fmt.Errorf("unexpected response format for asset %s", asset)
@@ -44,7 +43,7 @@ func getPriceHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func getPriceHandler(w http.ResponseWriter, r *http.Request) {
-	apiKey := "FD1CD239-A4FC-4E9C-9485-3657E01DBDB9" // Replace with your actual CoinAPI key
+	apiKey := "FD1CD239-A4FC-4E9C-9485-3657E01DBDB9"
 	exchangeRates, err := fetchExchangeRates(apiKey)
 	if err != nil {
 		http.Error(w, "Failed to fetch exchange rates", http.StatusInternalServerError)
