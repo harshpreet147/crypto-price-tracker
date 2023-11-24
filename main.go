@@ -4,6 +4,11 @@ import (
 	"log"
 	"net/http"
 )
+const coinAPIBaseURL = "https://rest.coinapi.io/v1/exchangerate/%s/CAD?apikey=%s"
+
+type ExchangeRates struct {
+	Rates map[string]float64 `json:"rates"`
+}
 
 func fetchExchangeRates(apiKey string) (ExchangeRates, error) {
 assets := []string{"BTC", "ETH", "XRP"}
